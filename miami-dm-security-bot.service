@@ -1,0 +1,19 @@
+[Unit]
+Description=Miami DM Telegram security monitor
+After=network-online.target fail2ban.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/miami-dm-security-bot.env
+ExecStart=/usr/bin/python3 /opt/miami-dm-security-bot/bot.py
+Restart=on-failure
+RestartSec=10
+User=root
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+
+[Install]
+WantedBy=multi-user.target
