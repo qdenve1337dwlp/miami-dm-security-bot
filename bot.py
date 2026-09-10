@@ -9,7 +9,11 @@ import time
 import urllib.parse
 import urllib.request
 
-TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
+TOKEN = (
+    os.environ.get("TELEGRAM_BOT_TOKEN")
+    or os.environ.get("BOT_TOKEN")
+    or ""
+).strip()
 CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
 GAME_SERVICE = os.environ.get("GAME_SERVICE", "ragemp.service").strip()
 SUMMARY_INTERVAL = max(30, int(os.environ.get("SUMMARY_INTERVAL", "60")))
@@ -52,7 +56,7 @@ def journal_reader():
 
 def main():
     if not TOKEN or not CHAT_ID:
-        raise SystemExit("TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID are required")
+        raise SystemExit("BOT_TOKEN (or TELEGRAM_BOT_TOKEN) and TELEGRAM_CHAT_ID are required")
 
     threading.Thread(target=journal_reader, daemon=True).start()
     send(f"🛡️ Мониторинг безопасности включён\nСервер: {HOST}")

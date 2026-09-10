@@ -18,7 +18,7 @@ sudo nano /etc/miami-dm-security-bot.env
 sudo systemctl enable --now miami-dm-security-bot
 ```
 
-В `/etc/miami-dm-security-bot.env` укажите новый токен Telegram-бота и свой chat ID:
+В `/etc/miami-dm-security-bot.env` укажите новый токен Telegram-бота и свой chat ID. На бот-хостингах, которые автоматически создают `BOT_TOKEN`, достаточно добавить только `TELEGRAM_CHAT_ID`:
 
 ```dotenv
 TELEGRAM_BOT_TOKEN=replace_with_a_new_bot_token
