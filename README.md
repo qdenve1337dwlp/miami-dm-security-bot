@@ -11,7 +11,7 @@
 ## Установка
 
 ```bash
-git clone https://github.com/YOUR_NAME/miami-dm-security-bot.git
+git clone https://github.com/qdenve1337dwlp/miami-dm-security-bot.git
 cd miami-dm-security-bot
 sudo ./install.sh
 sudo nano /etc/miami-dm-security-bot.env
